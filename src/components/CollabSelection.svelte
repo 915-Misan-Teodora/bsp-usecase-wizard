@@ -42,7 +42,15 @@
         const wasOpened = window.open(pullerUrl, '_blank');
         if (!wasOpened) showDialog = true;
       })
-      .catch(showError)
+      .catch((e) => {
+        showError(e);
+
+        setTimeout(() => {
+          console.log('Retry clone operation.');
+          pullerUrl = generatePullerLink(collabSelectedName);
+          window.location.href = pullerUrl;
+        }, 3000);
+      })
       .finally(() => {
         processing = false;
         collabSelectedName = '';
