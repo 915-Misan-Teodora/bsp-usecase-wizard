@@ -49,7 +49,7 @@
           console.log('Retry clone operation.');
           pullerUrl = generatePullerLink(collabSelectedName);
           window.location.href = pullerUrl;
-        }, 3000); // set timeout for 3 sec
+        }, 3000); // set timeout for 3 sec before retrying clone operation
       })
       .finally(() => {
         processing = false;
